@@ -406,13 +406,13 @@ public class agregaCasa extends JFrame implements ActionListener, FocusListener,
             str = Lat.getText().trim();
             tamaño = (str.length());
 
-            vacio = vd.soloSigno(tamaño, str);
+            vacio = vd.soloSignoyPunto(tamaño, str);
         } else if (e.getSource() == Long) {//solo numeros y signos
 
             str = Long.getText().trim();
             tamaño = (str.length());
 
-            vacio = vd.soloSigno(tamaño, str);
+            vacio = vd.soloSignoyPunto(tamaño, str);
         }
     }
 

@@ -14,7 +14,7 @@ public class validacionesJT {
     String letras = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz ";
     String numeros = "1234567890";
     String letMail = "@._-";
-    String letSign = "-+";
+    String letSign = "-+.";
 
     char letrA[] = letras.toCharArray();
     char numA[] = numeros.toCharArray();
@@ -22,13 +22,14 @@ public class validacionesJT {
     char signo[] = letSign.toCharArray();
 
     boolean vacio = true, mai;
-    int cLetras, cNumeros, cMail, cSigno;
+    int cLetras, cNumeros, cMail, cSigno, cPunto;
 
     public void evalua(char keC) {
         cLetras = 0;
         cNumeros = 0;
         cMail = 0;
         cSigno = 0;
+        cPunto = 0;
         for (int i = 0; i < letras.length(); i++) {//evaluador
             if (keC == letrA[i]) {//letras
                 cLetras++;
@@ -36,14 +37,14 @@ public class validacionesJT {
                 cNumeros++;
             } else if (i <= 3 && keC == mailA[i]) {//numeros
                 cMail++;
-            } else if (i <= 1 && keC == signo[i]) {//numeros y signo -
-                System.out.println(signo[i]);
+            } else if (i <= 2 && keC == signo[i]) {//numeros y signo -
                 cSigno++;
-            }
+            } 
+            
         }
     }
 
-    public boolean soloSigno(int tamaño, String str) {
+    public boolean soloSignoyPunto(int tamaño, String str) {
         if (tamaño == 0 || tamaño == 1) {
 
         } else {
@@ -61,7 +62,7 @@ public class validacionesJT {
         } else if (cMail != 0) {
 //            System.out.println("cosas raras");
             vacio = false;
-        } else {
+        } else{
             vacio = false;
         }
         return vacio;
@@ -82,8 +83,7 @@ public class validacionesJT {
         } else if (cMail != 0) {
 //            System.out.println("caracteres correo");
             vacio = false;
-        } else {
-//            System.out.println("cosas raras");
+        } else{
             vacio = false;
         }
         return vacio;
@@ -104,8 +104,7 @@ public class validacionesJT {
         } else if (cMail != 0) {
 //            System.out.println("caracteres correo");
             vacio = false;
-        } else {
-//            System.out.println("cosas raras");
+        } else{
             vacio = false;
         }
         return vacio;
@@ -126,8 +125,7 @@ public class validacionesJT {
         } else if (cMail != 0) {
 //            System.out.println("caracteres correo");
             vacio = true;
-        } else {
-//            System.out.println("cosas raras");
+        } else{
             vacio = false;
         }
         return vacio;
@@ -148,18 +146,20 @@ public class validacionesJT {
         } else if (cMail != 0) {
 //            System.out.println("caracteres correo");
             vacio = false;
-        } else {
-//            System.out.println("cosas raras");
+        } else{
             vacio = false;
         }
         return vacio;
     }
 
     public boolean evaluaCorreo(String correo) {
-        int arroba = 0, punto = 0, letra = 0, largo = correo.trim().length();
+        int arroba = 0,
+            punto = 0,
+            letra = 0,
+            largo = correo.trim().length();
 
         for (int i = 0; i < largo; i++) {
-
+            
             switch (correo.charAt(i)) {
                 case '@':
                     arroba++;
