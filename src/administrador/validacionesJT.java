@@ -15,13 +15,11 @@ public class validacionesJT {
     String numeros = "1234567890";
     String letMail = "@._-";
     String letSign = "-+.";
-    String letPoint = ".";
 
     char letrA[] = letras.toCharArray();
     char numA[] = numeros.toCharArray();
     char mailA[] = letMail.toCharArray();
     char signo[] = letSign.toCharArray();
-    char punto[]= letPoint.toCharArray();
 
     boolean vacio = true, mai;
     int cLetras, cNumeros, cMail, cSigno, cPunto;
@@ -41,9 +39,7 @@ public class validacionesJT {
                 cMail++;
             } else if (i <= 2 && keC == signo[i]) {//numeros y signo -
                 cSigno++;
-            } else if(i <= 0 && keC == punto[i]){
-                cPunto++;
-            }
+            } 
             
         }
     }
@@ -66,8 +62,6 @@ public class validacionesJT {
         } else if (cMail != 0) {
 //            System.out.println("cosas raras");
             vacio = false;
-        } else if(cPunto != 0 && cPunto ==1){
-            vacio = false;
         } else{
             vacio = false;
         }
@@ -88,8 +82,6 @@ public class validacionesJT {
             vacio = false;
         } else if (cMail != 0) {
 //            System.out.println("caracteres correo");
-            vacio = false;
-        } else if(cPunto != 1){
             vacio = false;
         } else{
             vacio = false;
@@ -179,10 +171,10 @@ public class validacionesJT {
                     letra++;
                     break;
             }
-            System.out.println(correo.charAt(i));
-            System.out.println(arroba);
-            System.out.println(punto);
-            System.out.println(letra + "\n");
+//            System.out.println(correo.charAt(i));
+//            System.out.println(arroba);
+//            System.out.println(punto);
+//            System.out.println(letra + "\n");
         }
 
         if (arroba == 0 || arroba > 1 || punto == 0 || letra <= 4) {
@@ -190,7 +182,59 @@ public class validacionesJT {
         } else if (arroba == 1 && punto != 0 && letra > 4) {
             mai = true;
         }
-        System.out.println(mai);
+        System.out.println("Eva Mai: "+mai+"\n");
+        return mai;
+    }
+    
+    public boolean evaluaCoord(String lat, String lg) {
+        int arrobaA = 0,
+            puntoA = 0,
+            letraA = 0,
+            arrobaO = 0,
+            puntoO = 0,
+            letraO = 0,
+            largoA = lat.length(),
+            largoO = lg.length();
+
+        for (int i = 0; i < largoA; i++) {
+            
+            switch (lat.charAt(i)) {
+                case '@':
+                    arrobaA++;
+                    break;
+                case '.':
+                    puntoA++;
+                    break;
+                default:
+                    letraA++;
+                    break;
+            }
+        }
+        
+        for (int i = 0; i < largoO; i++) {
+            switch (lg.charAt(i)) {
+                case '@':
+                    arrobaO++;
+                    break;
+                case '.':
+                    puntoO++;
+                    break;
+                default:
+                    letraO++;
+                    break;
+            }
+//            System.out.println(correo.charAt(i));
+//            System.out.println(arroba);
+//            System.out.println(punto);
+//            System.out.println(letra + "\n");
+        }
+
+        if (puntoA != 1 || puntoO != 1 || arrobaA != 0 || arrobaO != 0 || letraA == 0 || letraO == 0) {
+            mai = false;
+        } else if (puntoA == 1 && puntoO ==1 && arrobaA == 0 && arrobaO == 0) {
+            mai = true;
+        }
+        System.out.println("Eva Coord: "+mai+"\n");
         return mai;
     }
 }

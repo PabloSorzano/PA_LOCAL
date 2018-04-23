@@ -243,24 +243,31 @@ public class agregaCasa extends JFrame implements ActionListener, FocusListener,
             }
             System.out.println(resTex);
             agregaCuarto obj = new agregaCuarto(resTex);
+            this.dispose();
             obj.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(agregaUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
-
+    String LAT, LOG;
     private void agregaC() {
-        xCoorde = "(lat: " + Lat.getText().trim() + " , " + "long: " + Long.getText().trim() + ")";
+        LAT = Lat.getText().trim();
+        LOG = Long.getText().trim();
+        xCoorde = "(lat: " + LAT + " , " + "long: " + LOG + ")";
         xEstado = eDo.getText().trim();
         xMuni = muN.getText().trim();
         xCodigoP = cP.getText().trim();//5
         xCol = cO.getText().trim();
         xCalle = cA.getText().trim();
         xNumInt = nI.getText().trim();//10
-        boolean conD = true;
-
-        if (xCodigoP.length() != 5 || xNumInt.length() > 10 || eDo.getText().equals(estDef)
+        boolean conD = true, coord = vd.evaluaCoord(LAT, LOG);
+        if(coord==false){
+                JOptionPane.showMessageDialog(this, "Ingrese coordenadas validas");
+                Lat.setText(latDef);
+                Long.setText(longDef);
+                conD = false;
+        }else if (coord || xCodigoP.length() != 5 || xNumInt.length() > 10 || eDo.getText().equals(estDef)
                 || muN.getText().equals(munDef) || cP.getText().equals(codDef)
                 || cO.getText().equals(colDef) || cA.getText().equals(calDef)
                 || nI.getText().equals(intDef) || Lat.getText().equals(latDef) || Long.getText().equals(longDef)) {
@@ -423,7 +430,6 @@ public class agregaCasa extends JFrame implements ActionListener, FocusListener,
 
     @Override
     public void keyReleased(KeyEvent e) {
-        System.out.println(vacio);
         if (vacio) {
 
         } else if (e.getSource() == eDo) {
