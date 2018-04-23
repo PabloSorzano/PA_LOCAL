@@ -38,6 +38,28 @@ end if;
 end ;;
 DELIMITER ;
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+drop procedure if exists sp_AltaCuarto;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_AltaCuarto`(in xidUser int, in xCoorde varchar(200), in xEstado varchar(25), in xMunicipio varchar(25), in xCodigoPostal varchar(5), in xColonia varchar(25), in xCalle varchar(25), in xNumInt varchar(10))
+begin
+declare xIDU int;
+declare xMsj VARCHAR(50);
+declare existe int;
+declare existe1 int;
+
+set existe=(select count(*) from casa where casa.idUsuario=xidUser);
+if (existe=0) then
+	insert into casa (idCasa,idUsuario,Coordenadas,Estado,Municipio,CodigoPostal,Colonia,Calle,Numero_Interior) values (null,xidUser,xCoorde,xEstado,xMunicipio,xCodigoPostal,xColonia,xCalle,xNumInt);
+	set xMsj='Registro exitoso';
+    select xMsj;
+else
+	set xMsj='El usuario ya está registrado';
+	select xMsj;
+end if;
+	
+end ;;
+DELIMITER ;
+#///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 drop procedure if exists sp_EliminaDatos;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_EliminaDatos`(in idUsuario int)

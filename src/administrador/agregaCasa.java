@@ -242,7 +242,8 @@ public class agregaCasa extends JFrame implements ActionListener, FocusListener,
                 resTex += rs.getString(6);
             }
             System.out.println(resTex);
-            this.dispose();
+            agregaCuarto obj = new agregaCuarto(resTex);
+            obj.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(agregaUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }

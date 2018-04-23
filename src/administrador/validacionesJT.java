@@ -15,11 +15,13 @@ public class validacionesJT {
     String numeros = "1234567890";
     String letMail = "@._-";
     String letSign = "-+.";
+    String letPoint = ".";
 
     char letrA[] = letras.toCharArray();
     char numA[] = numeros.toCharArray();
     char mailA[] = letMail.toCharArray();
     char signo[] = letSign.toCharArray();
+    char punto[]= letPoint.toCharArray();
 
     boolean vacio = true, mai;
     int cLetras, cNumeros, cMail, cSigno, cPunto;
@@ -39,7 +41,9 @@ public class validacionesJT {
                 cMail++;
             } else if (i <= 2 && keC == signo[i]) {//numeros y signo -
                 cSigno++;
-            } 
+            } else if(i <= 0 && keC == punto[i]){
+                cPunto++;
+            }
             
         }
     }
@@ -62,6 +66,8 @@ public class validacionesJT {
         } else if (cMail != 0) {
 //            System.out.println("cosas raras");
             vacio = false;
+        } else if(cPunto != 0 && cPunto ==1){
+            vacio = false;
         } else{
             vacio = false;
         }
@@ -82,6 +88,8 @@ public class validacionesJT {
             vacio = false;
         } else if (cMail != 0) {
 //            System.out.println("caracteres correo");
+            vacio = false;
+        } else if(cPunto != 1){
             vacio = false;
         } else{
             vacio = false;
