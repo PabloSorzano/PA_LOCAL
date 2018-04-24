@@ -56,7 +56,7 @@ public class agregaCasa {
         //System.out.println(Arrays.toString(fontNames));
         this.datos = d.split(",");
         idUsr = Integer.parseInt(datos[0]);
-        System.out.println(idUsr);
+        System.out.println("Usuario: "+idUsr);
         System.out.println(d);
         agregaC();
     }
@@ -125,14 +125,15 @@ public class agregaCasa {
     }
 
     private void evalua() {
+        xCoorde = "(lat: " + LAT + " , " + "long: " + LOG + ")";
         conD = true;
         coord = vd.evaluaCoord(LAT, LOG);
         if (coord == false) {
-            System.out.println(latDef);
+            System.out.println("Ingrese una latitud valida");
             LAT = leer.nextLine().trim();
             analiza(LAT);
 
-            System.out.println(longDef);
+            System.out.println("Ingrese una longitud valida");
             LOG = leer.nextLine().trim();
             analiza(LOG);
 

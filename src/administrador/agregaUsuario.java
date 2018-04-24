@@ -79,16 +79,27 @@ public class agregaUsuario extends JFrame {
     }
 
     private void evalua() {
+        System.out.println("===========Nombre===========");
         vd.contaR(xnombre);
         nama = vd.soloLetras();
+        
+        System.out.println("===========Pat===========");
         vd.contaR(xaPat);
         pata = vd.soloLetras();
+        
+        System.out.println("===========Mat===========");
         vd.contaR(xaMat);
         mata = vd.soloLetras();
+        
+        System.out.println("===========Cel===========");
         vd.contaR(xcel);
         celu = vd.soloNumeros();
+        
+        System.out.println("===========Mail===========");
         vd.contaR(xmail);
         mai = vd.soloMail();
+        
+        System.out.println("===========Pass===========");
         vd.contaR(xpass);
         pass = vd.sinEspecial();
         if (cOrr || xcel.length() != 10 || xnombre.equals(namDef)
@@ -97,7 +108,6 @@ public class agregaUsuario extends JFrame {
                 || xpass.equals(passDef)) {
 
             cOrr = vd.evaluaCorreo(xmail);
-            System.out.println("Corre: " + cOrr);
             if (cOrr == false) {
                 System.out.println("Ingrese un correo valido");
                 xmail = leer.nextLine().trim();
@@ -140,24 +150,22 @@ public class agregaUsuario extends JFrame {
                 conD = false;
                 evalua();
 
-            } else if (xcel.length() != 10) {
+            } if (xcel.length() != 10) {
                 System.out.println("Ingrese un celular valido");
                 xcel = leer.nextLine().trim();
                 conD = false;
                 evalua();
-            } else if (conD == true && cOrr == true) {
+            } else {
                 accion();
 
-            } else {
-                System.out.println("Checa tus datos");
-            }
+            } 
         } else {
             accion();
         }
     }
 
     private void accion() {
-        System.out.println("Accion");
+        System.out.println("--------Agrega Usuario--------");
         try {
             bd.conectar();
             bd.agregaU(xnombre, xaPat, xaMat, xcel, xmail, xpass);

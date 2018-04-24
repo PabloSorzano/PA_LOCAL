@@ -46,12 +46,15 @@ public class validacionesJT {
         }
     }
 
-    public boolean soloSignoyPunto(int tamaño, String str) {
-        if (tamaño == 0 || tamaño == 1) {
-
-        } else {
-            tamaño = str.length() - 2;
-        }
+    public boolean soloSignoyPunto() {
+//        if (tamaño == 0 || tamaño == 1) {
+//
+//        } else {
+//            tamaño = str.length() - 2;
+//        }
+        System.out.println("Letras: " + cLetras);
+        System.out.println("Numeros: " + cNumeros);
+        System.out.println("Correo: " + cMail+"\n");
         if (cLetras != 0 && cNumeros == 0) {
 //            System.out.println("pura letra");
             vacio = false;
@@ -77,6 +80,8 @@ public class validacionesJT {
 //            tamaño = str.length() - 2;
 //        }
         System.out.println("Letras: " + cLetras);
+        System.out.println("Numeros: " + cNumeros);
+        System.out.println("Correo: " + cMail+"\n");
         if (cLetras != 0 && cNumeros == 0) {
 //            System.out.println("pura letra");
             vacio = true;
@@ -84,6 +89,9 @@ public class validacionesJT {
 //            System.out.println("puro numero");
             vacio = false;
         } else if (cMail != 0) {
+//            System.out.println("caracteres correo");
+            vacio = false;
+        } else if (cSigno != 0) {
 //            System.out.println("caracteres correo");
             vacio = false;
         } else {
@@ -98,7 +106,9 @@ public class validacionesJT {
 //        } else {
 //            tamaño = str.length() - 2;
 //        }
-        System.out.println("Numeros: "+cNumeros);
+        System.out.println("Letras: " + cLetras);
+        System.out.println("Numeros: " + cNumeros);
+        System.out.println("Correo: " + cMail+"\n");
         if (cLetras != 0 && cNumeros == 0) {
 //            System.out.println("pura letra");
             vacio = false;
@@ -106,6 +116,9 @@ public class validacionesJT {
 //            System.out.println("puro numero");
             vacio = true;
         } else if (cMail != 0) {
+//            System.out.println("caracteres correo");
+            vacio = false;
+        } else if (cSigno != 0) {
 //            System.out.println("caracteres correo");
             vacio = false;
         } else {
@@ -120,6 +133,9 @@ public class validacionesJT {
 //        } else {
 //            tamaño = str.length() - 2;
 //        }
+        System.out.println("Letras: " + cLetras);
+        System.out.println("Numeros: " + cNumeros);
+        System.out.println("Correo: " + cMail+"\n");
         if (cLetras != 0 && cNumeros == 0) {
 //            System.out.println("pura letra");
             vacio = true;
@@ -129,6 +145,9 @@ public class validacionesJT {
         } else if (cMail != 0) {
 //            System.out.println("caracteres correo");
             vacio = true;
+        } else if (cSigno != 0) {
+//            System.out.println("caracteres correo");
+            vacio = false;
         } else {
             vacio = false;
         }
@@ -141,6 +160,9 @@ public class validacionesJT {
 //        } else {
 //            tamaño = str.length() - 2;
 //        }
+        System.out.println("Letras: " + cLetras);
+        System.out.println("Numeros: " + cNumeros);
+        System.out.println("Correo: " + cMail+"\n");
         if (cLetras != 0 && cNumeros == 0) {
 //            System.out.println("pura letra");
             vacio = true;
