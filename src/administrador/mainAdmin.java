@@ -15,8 +15,8 @@ public class mainAdmin {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        inicio obj = new inicio();
+        agregaUsuario obj = new agregaUsuario();
         obj.setVisible(true);
     }
-    
+
 }

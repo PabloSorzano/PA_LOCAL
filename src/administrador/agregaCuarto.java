@@ -112,9 +112,7 @@ public class agregaCuarto extends JFrame implements ActionListener, FocusListene
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "cerrar":
-                bd.conectar();
-                System.out.println(bd.eliminarDatos("usuario", "idUsuario", "" + idUsr + "", ""));
-                System.out.println(bd.eliminarDatos("Casa", "idCasa", "" + idHs + "", ""));
+                
                 this.setVisible(false);
                 System.exit(0);
             case "mini":
@@ -160,9 +158,9 @@ public class agregaCuarto extends JFrame implements ActionListener, FocusListene
     
     @Override
     public void keyTyped(KeyEvent e) {
-        keC = e.getKeyChar();
-
-        vd.evalua(keC);
+//        keC = e.getKeyChar();
+//
+//        vd.evalua(keC);
 
 //        if (e.getSource() == eDo) {//solo Letras
 //

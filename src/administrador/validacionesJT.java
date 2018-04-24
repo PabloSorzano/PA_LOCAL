@@ -24,23 +24,23 @@ public class validacionesJT {
     boolean vacio = true, mai;
     int cLetras, cNumeros, cMail, cSigno, cPunto;
 
-    public void evalua(char keC) {
+    public void contaR(String k) {
         cLetras = 0;
         cNumeros = 0;
         cMail = 0;
         cSigno = 0;
         cPunto = 0;
-        for (int i = 0; i < letras.length(); i++) {//evaluador
-            if (keC == letrA[i]) {//letras
+        for (int i = 0; i < k.length(); i++) {//evaluador
+            if (k.charAt(i) == letrA[i]) {//letras
                 cLetras++;
-            } else if (i <= 9 && keC == numA[i]) {//numeros
+            } else if (i <= 9 && k.charAt(i) == numA[i]) {//numeros
                 cNumeros++;
-            } else if (i <= 3 && keC == mailA[i]) {//numeros
+            } else if (i <= 3 && k.charAt(i) == mailA[i]) {//numeros
                 cMail++;
-            } else if (i <= 2 && keC == signo[i]) {//numeros y signo -
+            } else if (i <= 2 && k.charAt(i) == signo[i]) {//numeros y signo -
                 cSigno++;
-            } 
-            
+            }
+
         }
     }
 
@@ -62,7 +62,7 @@ public class validacionesJT {
         } else if (cMail != 0) {
 //            System.out.println("cosas raras");
             vacio = false;
-        } else{
+        } else {
             vacio = false;
         }
         return vacio;
@@ -83,7 +83,7 @@ public class validacionesJT {
         } else if (cMail != 0) {
 //            System.out.println("caracteres correo");
             vacio = false;
-        } else{
+        } else {
             vacio = false;
         }
         return vacio;
@@ -104,7 +104,7 @@ public class validacionesJT {
         } else if (cMail != 0) {
 //            System.out.println("caracteres correo");
             vacio = false;
-        } else{
+        } else {
             vacio = false;
         }
         return vacio;
@@ -125,7 +125,7 @@ public class validacionesJT {
         } else if (cMail != 0) {
 //            System.out.println("caracteres correo");
             vacio = true;
-        } else{
+        } else {
             vacio = false;
         }
         return vacio;
@@ -146,7 +146,7 @@ public class validacionesJT {
         } else if (cMail != 0) {
 //            System.out.println("caracteres correo");
             vacio = false;
-        } else{
+        } else {
             vacio = false;
         }
         return vacio;
@@ -154,12 +154,12 @@ public class validacionesJT {
 
     public boolean evaluaCorreo(String correo) {
         int arroba = 0,
-            punto = 0,
-            letra = 0,
-            largo = correo.trim().length();
+                punto = 0,
+                letra = 0,
+                largo = correo.trim().length();
 
         for (int i = 0; i < largo; i++) {
-            
+
             switch (correo.charAt(i)) {
                 case '@':
                     arroba++;
@@ -182,22 +182,22 @@ public class validacionesJT {
         } else if (arroba == 1 && punto != 0 && letra > 4) {
             mai = true;
         }
-        System.out.println("Eva Mai: "+mai+"\n");
+        System.out.println("Eva Mai: " + mai);
         return mai;
     }
-    
+
     public boolean evaluaCoord(String lat, String lg) {
         int arrobaA = 0,
-            puntoA = 0,
-            letraA = 0,
-            arrobaO = 0,
-            puntoO = 0,
-            letraO = 0,
-            largoA = lat.length(),
-            largoO = lg.length();
+                puntoA = 0,
+                letraA = 0,
+                arrobaO = 0,
+                puntoO = 0,
+                letraO = 0,
+                largoA = lat.length(),
+                largoO = lg.length();
 
         for (int i = 0; i < largoA; i++) {
-            
+
             switch (lat.charAt(i)) {
                 case '@':
                     arrobaA++;
@@ -210,7 +210,7 @@ public class validacionesJT {
                     break;
             }
         }
-        
+
         for (int i = 0; i < largoO; i++) {
             switch (lg.charAt(i)) {
                 case '@':
@@ -231,10 +231,10 @@ public class validacionesJT {
 
         if (puntoA != 1 || puntoO != 1 || arrobaA != 0 || arrobaO != 0 || letraA == 0 || letraO == 0) {
             mai = false;
-        } else if (puntoA == 1 && puntoO ==1 && arrobaA == 0 && arrobaO == 0) {
+        } else if (puntoA == 1 && puntoO == 1 && arrobaA == 0 && arrobaO == 0) {
             mai = true;
         }
-        System.out.println("Eva Coord: "+mai+"\n");
+        System.out.println("Eva Coord: " + mai + "\n");
         return mai;
     }
 }

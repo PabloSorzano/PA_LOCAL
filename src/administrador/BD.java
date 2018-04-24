@@ -53,7 +53,7 @@ public class BD {
             c = null;
         }
         if (c != null) {
-            System.out.println("Conexion Exitosa");
+            System.out.println("Conexion Exitosa \n");
         }
         return c;
     }
