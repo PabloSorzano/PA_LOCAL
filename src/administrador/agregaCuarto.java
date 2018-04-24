@@ -30,7 +30,7 @@ public class agregaCuarto extends JFrame implements ActionListener, FocusListene
     ResultSet rs = null;
 
     int idUsr = 666, idHs = 666;
-    
+
     String resTex = "",
             datos[] = null;
 
@@ -42,8 +42,8 @@ public class agregaCuarto extends JFrame implements ActionListener, FocusListene
         this.datos = d.split(",");
         idHs = Integer.parseInt(datos[0]);
         idUsr = Integer.parseInt(datos[1]);
-        System.out.println("Usuario: "+idUsr+"\n");
-        System.out.println("Casa: "+idHs+"\n");
+        System.out.println("Usuario: " + idUsr + "\n");
+        System.out.println("Casa: " + idHs + "\n");
         System.out.println(d);
 
     }
@@ -107,12 +107,12 @@ public class agregaCuarto extends JFrame implements ActionListener, FocusListene
         minimizar.addActionListener(this);
         barra.add(minimizar);
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "cerrar":
-                
+
                 this.setVisible(false);
                 System.exit(0);
             case "mini":
@@ -125,26 +125,26 @@ public class agregaCuarto extends JFrame implements ActionListener, FocusListene
                 break;
         }
     }
-    
+
     private void agregaC() {
     }
-    
+
     int x, y, equis, yes;
     boolean move = false;
-    
+
     int tamaño;
     char keC;
     String str;
     validacionesJT vd = new validacionesJT();
     boolean vacio;
-    
+
     @Override
     public void focusGained(FocusEvent e) {
 //        if (e.getSource() == eDo && eDo.getText().equals(estDef)) {
 //            eDo.setText("");
 //        } else if (e.getSource() == muN && muN.getText().equals(munDef)) {
 //            muN.setText("");
-        
+
     }
 
     @Override
@@ -153,9 +153,9 @@ public class agregaCuarto extends JFrame implements ActionListener, FocusListene
 //            eDo.setText(estDef);
 //        } else if (e.getSource() == muN && muN.getText().isEmpty()) {
 //            muN.setText(munDef);
-        
+
     }
-    
+
     @Override
     public void keyTyped(KeyEvent e) {
 //        keC = e.getKeyChar();
@@ -169,9 +169,7 @@ public class agregaCuarto extends JFrame implements ActionListener, FocusListene
 //
 //            vacio = vd.soloLetras(tamaño, str);
 //        } else if (e.getSource() == muN) {//solo letras
-
-           
-        }
+    }
 
     @Override
     public void keyPressed(KeyEvent e) {
@@ -187,7 +185,7 @@ public class agregaCuarto extends JFrame implements ActionListener, FocusListene
 //        } else if (e.getSource() == muN) {
         }
     }
-    
+
     @Override
     public void mouseDragged(MouseEvent e) {
         if (move) {
@@ -230,7 +228,4 @@ public class agregaCuarto extends JFrame implements ActionListener, FocusListene
     public void mouseExited(MouseEvent e) {
     }
 
-    
-
-    
 }

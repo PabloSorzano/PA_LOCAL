@@ -31,14 +31,16 @@ public class validacionesJT {
         cSigno = 0;
         cPunto = 0;
         for (int i = 0; i < k.length(); i++) {//evaluador
-            if (k.charAt(i) == letrA[i]) {//letras
-                cLetras++;
-            } else if (i <= 9 && k.charAt(i) == numA[i]) {//numeros
-                cNumeros++;
-            } else if (i <= 3 && k.charAt(i) == mailA[i]) {//numeros
-                cMail++;
-            } else if (i <= 2 && k.charAt(i) == signo[i]) {//numeros y signo -
-                cSigno++;
+            for (int j = 0; j < letras.length(); j++) {
+                if (k.charAt(i) == letrA[j]) {//letras
+                    cLetras++;
+                } else if (j <= 9 && k.charAt(i) == numA[j]) {//numeros
+                    cNumeros++;
+                } else if (j <= 3 && k.charAt(i) == mailA[j]) {//numeros
+                    cMail++;
+                } else if (j <= 2 && k.charAt(i) == signo[j]) {//numeros y signo -
+                    cSigno++;
+                }
             }
 
         }
@@ -68,12 +70,13 @@ public class validacionesJT {
         return vacio;
     }
 
-    public boolean soloLetras(int tamaño, String str) {
-        if (tamaño == 0 || tamaño == 1) {
-
-        } else {
-            tamaño = str.length() - 2;
-        }
+    public boolean soloLetras() {
+//        if (tamaño == 0 || tamaño == 1) {
+//
+//        } else {
+//            tamaño = str.length() - 2;
+//        }
+        System.out.println("Letras: " + cLetras);
         if (cLetras != 0 && cNumeros == 0) {
 //            System.out.println("pura letra");
             vacio = true;
@@ -89,12 +92,13 @@ public class validacionesJT {
         return vacio;
     }
 
-    public boolean soloNumeros(int tamaño, String str) {
-        if (tamaño == 0 || tamaño == 1) {
-
-        } else {
-            tamaño = str.length() - 2;
-        }
+    public boolean soloNumeros() {
+//        if (tamaño == 0 || tamaño == 1) {
+//
+//        } else {
+//            tamaño = str.length() - 2;
+//        }
+        System.out.println("Numeros: "+cNumeros);
         if (cLetras != 0 && cNumeros == 0) {
 //            System.out.println("pura letra");
             vacio = false;
@@ -110,12 +114,12 @@ public class validacionesJT {
         return vacio;
     }
 
-    public boolean soloMail(int tamaño, String str) {
-        if (tamaño == 0 || tamaño == 1) {
-
-        } else {
-            tamaño = str.length() - 2;
-        }
+    public boolean soloMail() {
+//        if (tamaño == 0 || tamaño == 1) {
+//
+//        } else {
+//            tamaño = str.length() - 2;
+//        }
         if (cLetras != 0 && cNumeros == 0) {
 //            System.out.println("pura letra");
             vacio = true;
@@ -131,12 +135,12 @@ public class validacionesJT {
         return vacio;
     }
 
-    public boolean sinEspecial(int tamaño, String str) {
-        if (tamaño == 0 || tamaño == 1) {
-
-        } else {
-            tamaño = str.length() - 2;
-        }
+    public boolean sinEspecial() {
+//        if (tamaño == 0 || tamaño == 1) {
+//
+//        } else {
+//            tamaño = str.length() - 2;
+//        }
         if (cLetras != 0 && cNumeros == 0) {
 //            System.out.println("pura letra");
             vacio = true;

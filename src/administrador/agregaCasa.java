@@ -135,7 +135,7 @@ public class agregaCasa {
             System.out.println(longDef);
             LOG = leer.nextLine().trim();
             analiza(LOG);
-            
+
             conD = false;
             evalua();
 
@@ -223,13 +223,14 @@ public class agregaCasa {
             accion();
         }
     }
-    
-    private void analiza(String t){
-        if(t.equalsIgnoreCase("cerrar")){
+
+    private void analiza(String t) {
+        if (t.equalsIgnoreCase("cerrar")) {
             cerrar();
-        }else{}
+        } else {
+        }
     }
-    
+
     private void cerrar() {
         bd.conectar();
         System.out.println(bd.eliminarDatos("usuario", "idUsuario", "" + idUsr + "", ""));
