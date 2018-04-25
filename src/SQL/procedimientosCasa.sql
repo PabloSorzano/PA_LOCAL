@@ -4,6 +4,7 @@ select * from usuario;
 select * from casa;
 select * from catalogo_dispositivos;
 select * from cuarto;
+select * from cuarto_dispositivos;
 
 drop procedure if exists sp_AltaUsuario;
 DELIMITER ;;

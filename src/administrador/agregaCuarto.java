@@ -9,6 +9,7 @@ import java.awt.Color;
 import static java.awt.Frame.ICONIFIED;
 import java.awt.event.*;
 import java.sql.*;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
@@ -25,6 +26,8 @@ public class agregaCuarto {
     JLabel barra, titulo;
 
     BD bd = new BD();
+    validacionesJT vd = new validacionesJT();
+    Scanner leer = new Scanner(System.in);
     Connection co = null;
     Statement s = null;
     ResultSet rs = null;
@@ -33,7 +36,9 @@ public class agregaCuarto {
 
     String resTex = "",
             datos[] = null;
-    boolean sigueCu, siguePi;
+    boolean sigueCu=true, siguePi=true;
+    String sigCu, sigPi;
+    int objetos=0;
 
     public agregaCuarto(String d) {
         //String[] fontNames=GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
@@ -45,19 +50,34 @@ public class agregaCuarto {
         System.out.println("Usuario: " + idUsr);
         System.out.println("Casa: " + idHs);
         System.out.println(d); 
-        cerrar();
-
+        agregaC();
     }
 
     private void agregaC() {
-        System.out.println("Ingrese el nombre del cuarto");
         
+        
+        do{
         System.out.println("Ingrese el numero del piso");
         
-        System.out.println("Desea agregar alguna observacion?");
+        
+        System.out.println("Ingrese el nombre del cuarto");
+        
+        
+        System.out.println("Ingrese una observación (optativa)");
+        
+        
+        }while(siguePi=true);
+    }
+    
+    private void analiza(String t) {
+        if (t.equalsIgnoreCase("cerrar")) {
+            cerrar();
+        } else {
+        }
     }
     
     private void cerrar() {
+        System.out.println("-------Cerrar-------");
         bd.conectar();
         System.out.println(bd.eliminarDatos("usuario", "idUsuario", "" + idUsr + "", ""));
         System.out.println(bd.eliminarDatos("Casa", "idCasa", "" + idHs + "", ""));

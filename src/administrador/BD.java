@@ -24,10 +24,11 @@ public class BD {
     String usuario = "root";
     String pass = "n0m3l0";
 
-    int idUsuario;
+    int idUsuario, idCasa, numeroPiso;
     String nama, aPat, aMat, cel, mail, contra,
             estado, muni, codigoP,//codigoPostal 5 caracteres
-            col, calle, numInt, coordenadas;//numeroInterior 10 caracteres
+            col, calle, numInt, coordenadas,
+            nombreCuarto, observacionCuarto;
     String datos, mensaje;
 
     public Connection conectar() {
@@ -77,6 +78,13 @@ public class BD {
         this.calle = calle;
         this.numInt = numInt;
     }
+    
+    public void agregaCuarto(int idCasa, String nombreCuarto, int numeroPiso, String observacionCuarto) {
+        this.idCasa = idCasa;
+        this.nombreCuarto = nombreCuarto;
+        this.numeroPiso = numeroPiso;
+        this.observacionCuarto = observacionCuarto;
+    }
 
     public Statement procedimiento(String proc) {
 
@@ -87,12 +95,10 @@ public class BD {
             } else if (proc.equalsIgnoreCase("altaCasa")) {
                 s.execute("call smarthouse.sp_AltaCasa(" + idUsuario + ", '" + coordenadas + "' , '" + estado + "', '" + muni + "', '" + codigoP + "', '" + col + "', '" + calle + "', '" + numInt + "');");
                 System.out.println("Casa de alta con éxito");
-            } else if (proc.equalsIgnoreCase("delUsuario")) {
-                s.execute("call smarthouse.sp_EliminaUsuario(" + idUsuario + "');");
-                System.out.println("El usuario no se ha guardado");
-            } else {
-
-            }
+            } else if (proc.equalsIgnoreCase("altaCuarto")) {
+                s.execute("call smarthouse.sp_AltaCuarto("+idCasa+", '"+nombreCuarto+"', "+numeroPiso+", '"+observacionCuarto+"');");
+                System.out.println("Cuarto dado de alta con éxito");
+            } 
         } catch (SQLException ex) {
             Logger.getLogger(BD.class.getName()).log(Level.SEVERE, null, ex);
         }
