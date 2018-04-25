@@ -19,7 +19,7 @@ import javax.swing.*;
  *
  * @author Sorz Torres
  */
-public class agregaUsuario extends JFrame {
+public class agregaUsuario extends JFrame{
 
     JButton minimizar, cerrar, agregar;
     JLabel barra, titulo;
@@ -80,88 +80,68 @@ public class agregaUsuario extends JFrame {
 
     private void evalua() {
         System.out.println("===========Nombre===========");
-        vd.contaR(xnombre);
-        nama = vd.soloLetras();
+        nama = vd.soloLetras(xnombre);
         
-        System.out.println("===========Pat===========");
-        vd.contaR(xaPat);
-        pata = vd.soloLetras();
-        
-        System.out.println("===========Mat===========");
-        vd.contaR(xaMat);
-        mata = vd.soloLetras();
-        
-        System.out.println("===========Cel===========");
-        vd.contaR(xcel);
-        celu = vd.soloNumeros();
-        
-        System.out.println("===========Mail===========");
-        vd.contaR(xmail);
-        mai = vd.soloMail();
-        
-        System.out.println("===========Pass===========");
-        vd.contaR(xpass);
-        pass = vd.sinEspecial();
-        if (cOrr || xcel.length() != 10 || xnombre.equals(namDef)
-                || xaPat.equals(patDef) || xaMat.equals(matDef)
-                || xcel.equals(celDef) || xmail.equals(mailDef)
-                || xpass.equals(passDef)) {
-
-            cOrr = vd.evaluaCorreo(xmail);
-            if (cOrr == false) {
-                System.out.println("Ingrese un correo valido");
-                xmail = leer.nextLine().trim();
-                conD = false;
-                evalua();
-            } 
-            if (xnombre.equals(namDef) || nama == false) {
+        if (xnombre.equals(namDef) || nama == false) {
                 System.out.println("Ingrese un nombre valido");
                 xnombre = leer.nextLine().trim();
                 conD = false;
                 evalua();
-            }
-            if (xaPat.equals(patDef) || pata == false) {
+            }else{}
+        System.out.println("===========Pat===========");
+        pata = vd.soloLetras(xaPat);
+        
+        if (xaPat.equals(patDef) || pata == false) {
                 System.out.println("Ingrese un apellido paterno valido");
                 xaPat = leer.nextLine().trim();
                 conD = false;
                 evalua();
-            }
-            if (xaMat.equals(matDef) || mata == false) {
+            }else{}
+        System.out.println("===========Mat===========");
+        mata = vd.soloLetras(xaMat);
+        
+        if (xaMat.equals(matDef) || mata == false) {
                 System.out.println("Ingrese un apellido materno valido");
                 xaMat = leer.nextLine().trim();
                 conD = false;
                 evalua();
-            }
-            if (xcel.equals(celDef) || celu == false) {
+            }else{}
+        System.out.println("===========Cel===========");
+        celu = vd.soloNumeros(xcel);
+        
+            if (xcel.equals(celDef) || xcel.length() != 10) {
                 System.out.println("Ingrese un celular valido");
                 xcel = leer.nextLine().trim();
                 conD = false;
                 evalua();
+            }else if(celu){
+                conD = true;
             }
-            if (xmail.equals(mailDef) || mai == false) {
+        
+        
+        System.out.println("===========Mail===========");
+        mai = vd.soloMail(xmail);
+        
+        if (xmail.equals(mailDef) || mai == false) {
                 System.out.println("Ingrese un correo valido");
                 xmail = leer.nextLine().trim();
                 conD = false;
                 evalua();
-            }
-            if (xpass.equals(passDef) || pass == false) {
+            }else{}
+        System.out.println("===========Pass===========");
+        pass = vd.sinEspecial(xpass);
+        
+        if (xpass.equals(passDef) || pass == false) {
                 System.out.println("Ingrese una contraseña valida");
                 xpass = leer.nextLine().trim();
                 conD = false;
                 evalua();
 
-            } if (xcel.length() != 10) {
-                System.out.println("Ingrese un celular valido");
-                xcel = leer.nextLine().trim();
-                conD = false;
-                evalua();
-            } else {
-                accion();
-
-            } 
-        } else {
+            }else{}
+        
+        if(conD){
             accion();
-        }
+        }else{}
     }
 
     private void accion() {
@@ -172,7 +152,7 @@ public class agregaUsuario extends JFrame {
             rs = bd.obtenerDatos("usuario", "*", "Email = '" + xmail + "'");
             if (rs.next()) {
                 System.out.println("Usuario existente");
-                agregaUsuario obj = new agregaUsuario();
+                mainAdmin obj = new mainAdmin();
                 obj.setVisible(true);
             } else {
                 s = bd.procedimiento("altaUsuario");
@@ -187,11 +167,13 @@ public class agregaUsuario extends JFrame {
                     resTex += rs.getString(7);
                 }
                 agregaCasa obj = new agregaCasa(resTex);
-
+                
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(agregaUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    
 }

@@ -5,11 +5,13 @@
  */
 package administrador;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Sorz Torres
  */
-public class mainAdmin {
+public class mainAdmin extends JFrame{
 
     /**
      * @param args the command line arguments

@@ -49,7 +49,7 @@ public class agregaCasa {
             latDef = "Ingrese latitud (casa)",
             longDef = "Ingrese longitud (casa)",
             datos[] = null;
-    boolean coord, conD;
+    boolean coord, conD, state, mun, coP, col, cal, numI;
 
     public agregaCasa(String d) {
         //String[] fontNames=GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
@@ -62,6 +62,7 @@ public class agregaCasa {
     }
 
     private void accion() {
+        System.out.println("----------Agrega Casa----------");
         try {
             bd.conectar();
             bd.agregaC(idUsr, xCoorde, xEstado, xMuni, xCodigoP, xCol, xCalle, xNumInt);
@@ -87,55 +88,73 @@ public class agregaCasa {
     private void agregaC() {
         System.out.println("\n ===========Agregar casa===========");
         System.out.println(latDef);
-        LAT = leer.nextLine().trim();
-        analiza(LAT);
+        LAT = leer.nextLine().trim();analiza(LAT);
 
         System.out.println(longDef);
-        LOG = leer.nextLine().trim();
-        analiza(LOG);
+        LOG = leer.nextLine().trim();analiza(LOG);
 
         xCoorde = "(lat: " + LAT + " , " + "long: " + LOG + ")";
 
         System.out.println(estDef);
-        xEstado = leer.nextLine().trim();
-        analiza(xEstado);
+        xEstado = leer.nextLine().trim();analiza(xEstado);
 
         System.out.println(munDef);
-        xMuni = leer.nextLine().trim();
-        analiza(xMuni);
+        xMuni = leer.nextLine().trim();analiza(xMuni);
 
         System.out.println(codDef);
-        xCodigoP = leer.nextLine().trim();//5
-        analiza(xCodigoP);
+        xCodigoP = leer.nextLine().trim();analiza(xCodigoP);
 
         System.out.println(colDef);
-        xCol = leer.nextLine().trim();
-        analiza(xCol);
+        xCol = leer.nextLine().trim();analiza(xCol);
 
         System.out.println(calDef);
-        xCalle = leer.nextLine().trim();
-        analiza(xCalle);
+        xCalle = leer.nextLine().trim();analiza(xCalle);
 
         System.out.println(intDef);
-        xNumInt = leer.nextLine().trim();//10
-        analiza(xNumInt);
-
+        xNumInt = leer.nextLine().trim();analiza(xNumInt);
+        
         evalua();
 
     }
 
     private void evalua() {
+        System.out.println("===========Estado===========");
+        state = vd.soloLetras(xEstado);
+        
+        System.out.println("===========Municipio===========");
+        mun = vd.soloLetras(xMuni);
+        
+        System.out.println("===========Codigo Postal===========");
+        coP = vd.soloNumeros(xCodigoP);
+        
+        System.out.println("===========Colonia===========");
+        col = vd.soloLetras(xCol);
+        
+        System.out.println("===========Calle===========");
+        cal = vd.soloLetras(xCalle);
+        
+        System.out.println("===========Numero Interior===========");
+        numI = vd.soloNumeros(xNumInt);
+        
         xCoorde = "(lat: " + LAT + " , " + "long: " + LOG + ")";
         conD = true;
         coord = vd.evaluaCoord(LAT, LOG);
+        
+        analiza(LAT);
+        analiza(LOG);
+        analiza(xEstado);
+        analiza(xMuni);
+        analiza(xCodigoP);
+        analiza(xCol);
+        analiza(xCalle);
+        analiza(xNumInt);
         if (coord == false) {
             System.out.println("Ingrese una latitud valida");
-            LAT = leer.nextLine().trim();
-            analiza(LAT);
+            LAT = leer.nextLine().trim();analiza(LAT);
 
+        
             System.out.println("Ingrese una longitud valida");
-            LOG = leer.nextLine().trim();
-            analiza(LOG);
+            LOG = leer.nextLine().trim();analiza(LOG);
 
             conD = false;
             evalua();
@@ -160,43 +179,43 @@ public class agregaCasa {
                 evalua();
 
             }
-            if (xEstado.equals(estDef)) {
+            if (xEstado.equals(estDef) || state==false) {
                 System.out.println("Ingrese un estado");
                 xEstado = leer.nextLine().trim();
                 analiza(xEstado);
                 conD = false;
                 evalua();
             }
-            if (xMuni.equals(munDef)) {
+            if (xMuni.equals(munDef) || mun==false) {
                 System.out.println("Ingrese un municipio");
                 xMuni = leer.nextLine().trim();
                 analiza(xMuni);
                 conD = false;
                 evalua();
             }
-            if (xCodigoP.equals(codDef)) {
+            if (xCodigoP.equals(codDef) || coP==false) {
                 System.out.println("Ingrese un codigo postal");
                 xCodigoP = leer.nextLine().trim();
                 analiza(xCodigoP);
                 conD = false;
                 evalua();
             }
-            if (xCol.equals(colDef)) {
-                System.out.println("Ingrese una colonia");
+            if (xCol.equals(colDef) || col==false) {
+                System.out.println("Ingrese una colonia valida");
                 xCol = leer.nextLine().trim();
                 analiza(xCol);
                 conD = false;
                 evalua();
             }
-            if (xCalle.equals(calDef)) {
-                System.out.println("Ingrese una calle");
+            if (xCalle.equals(calDef) || cal==false) {
+                System.out.println("Ingrese una calle valid");
                 xCalle = leer.nextLine().trim();
                 analiza(xCalle);
                 conD = false;
                 evalua();
             }
-            if (xNumInt.equals(intDef)) {
-                System.out.println("Ingrese un numero interior");
+            if (xNumInt.equals(intDef) || numI==false) {
+                System.out.println("Ingrese un numero interior valido");
                 xNumInt = leer.nextLine().trim();
                 analiza(xNumInt);
                 conD = false;
@@ -233,6 +252,7 @@ public class agregaCasa {
     }
 
     private void cerrar() {
+        System.out.println("-------Cerrar-------");
         bd.conectar();
         System.out.println(bd.eliminarDatos("usuario", "idUsuario", "" + idUsr + "", ""));
         //System.out.println(bd.eliminarDatos("Casa", "idCasa", "" + idHs + "", "")); si la casa existe
