@@ -41,16 +41,16 @@ DELIMITER ;
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 drop procedure if exists sp_AltaCuarto;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_AltaCuarto`(in xidUser int, in xCoorde varchar(200), in xEstado varchar(25), in xMunicipio varchar(25), in xCodigoPostal varchar(5), in xColonia varchar(25), in xCalle varchar(25), in xNumInt varchar(10))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_AltaCuarto`(in xidCasa int(100),in xNombreCuarto varchar(100),in xNumeroPiso int(100),in xObservacion varchar(100))
 begin
 declare xIDU int;
 declare xMsj VARCHAR(50);
 declare existe int;
 declare existe1 int;
 
-set existe=(select count(*) from casa where casa.idUsuario=xidUser);
+set existe=(select count(*) from cuarto where cuarto.idCasa=xidCasa);
 if (existe=0) then
-	insert into casa (idCasa,idUsuario,Coordenadas,Estado,Municipio,CodigoPostal,Colonia,Calle,Numero_Interior) values (null,xidUser,xCoorde,xEstado,xMunicipio,xCodigoPostal,xColonia,xCalle,xNumInt);
+	insert into cuarto (idCuarto, idCasa, nombre, numero_Piso, observacion) values (null,xidCasa,xNombreCuarto,xNumeroPiso,xObservacion);
 	set xMsj='Registro exitoso';
     select xMsj;
 else
