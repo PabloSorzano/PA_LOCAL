@@ -80,6 +80,7 @@ public class agregaUsuario extends JFrame{
 
     private void evalua() {
         System.out.println("===========Nombre===========");
+        System.out.println(xnombre);
         nama = vd.soloLetras(xnombre);
         
         if (xnombre.equals(namDef) || nama == false) {
@@ -89,6 +90,7 @@ public class agregaUsuario extends JFrame{
                 evalua();
             }else{}
         System.out.println("===========Pat===========");
+        System.out.println(xaPat);
         pata = vd.soloLetras(xaPat);
         
         if (xaPat.equals(patDef) || pata == false) {
@@ -98,6 +100,7 @@ public class agregaUsuario extends JFrame{
                 evalua();
             }else{}
         System.out.println("===========Mat===========");
+        System.out.println(xaMat);
         mata = vd.soloLetras(xaMat);
         
         if (xaMat.equals(matDef) || mata == false) {
@@ -107,9 +110,10 @@ public class agregaUsuario extends JFrame{
                 evalua();
             }else{}
         System.out.println("===========Cel===========");
+        System.out.println(xcel);
         celu = vd.soloNumeros(xcel);
         
-            if (xcel.equals(celDef) || xcel.length() != 10) {
+            if (xcel.equals(celDef) || xcel.length() != 10 || celu==false) {
                 System.out.println("Ingrese un celular valido");
                 xcel = leer.nextLine().trim();
                 conD = false;
@@ -120,7 +124,8 @@ public class agregaUsuario extends JFrame{
         
         
         System.out.println("===========Mail===========");
-        mai = vd.soloMail(xmail);
+        System.out.println(xmail)
+        ;mai = vd.soloMail(xmail);
         
         if (xmail.equals(mailDef) || mai == false) {
                 System.out.println("Ingrese un correo valido");
@@ -129,6 +134,7 @@ public class agregaUsuario extends JFrame{
                 evalua();
             }else{}
         System.out.println("===========Pass===========");
+        System.out.println(xpass);
         pass = vd.sinEspecial(xpass);
         
         if (xpass.equals(passDef) || pass == false) {
@@ -148,7 +154,7 @@ public class agregaUsuario extends JFrame{
         System.out.println("--------Agrega Usuario--------");
         try {
             bd.conectar();
-            bd.agregaU(xnombre, xaPat, xaMat, xcel, xmail, xpass);
+            bd.agregaU(xnombre.trim(), xaPat.trim(), xaMat.trim(), xcel.trim(), xmail.trim(), xpass.trim());
             rs = bd.obtenerDatos("usuario", "*", "Email = '" + xmail + "'");
             if (rs.next()) {
                 System.out.println("Usuario existente");

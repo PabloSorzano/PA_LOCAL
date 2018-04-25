@@ -48,9 +48,12 @@ public class agregaCuarto {
 
     }
 
-    
-
     private void agregaC() {
+        System.out.println("Ingrese el nombre del cuarto");
+        
+        System.out.println("Ingrese el numero del piso");
+        
+        System.out.println("Desea agregar alguna observacion?");
     }
     
     private void cerrar() {

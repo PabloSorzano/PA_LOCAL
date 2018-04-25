@@ -149,6 +149,7 @@ public class agregaCasa {
         analiza(xCalle);
         analiza(xNumInt);
         if (coord == false) {
+            System.out.println("-------------Coordenadas incorrectas-------------");
             System.out.println("Ingrese una latitud valida");
             LAT = leer.nextLine().trim();analiza(LAT);
 
@@ -180,14 +181,14 @@ public class agregaCasa {
 
             }
             if (xEstado.equals(estDef) || state==false) {
-                System.out.println("Ingrese un estado");
+                System.out.println("Ingrese un estado valido");
                 xEstado = leer.nextLine().trim();
                 analiza(xEstado);
                 conD = false;
                 evalua();
             }
             if (xMuni.equals(munDef) || mun==false) {
-                System.out.println("Ingrese un municipio");
+                System.out.println("Ingrese un municipio valido");
                 xMuni = leer.nextLine().trim();
                 analiza(xMuni);
                 conD = false;
@@ -208,7 +209,7 @@ public class agregaCasa {
                 evalua();
             }
             if (xCalle.equals(calDef) || cal==false) {
-                System.out.println("Ingrese una calle valid");
+                System.out.println("Ingrese una calle valida");
                 xCalle = leer.nextLine().trim();
                 analiza(xCalle);
                 conD = false;
