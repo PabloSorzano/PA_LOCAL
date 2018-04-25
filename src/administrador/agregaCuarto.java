@@ -33,6 +33,7 @@ public class agregaCuarto {
 
     String resTex = "",
             datos[] = null;
+    boolean sigueCu, siguePi;
 
     public agregaCuarto(String d) {
         //String[] fontNames=GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
@@ -43,7 +44,7 @@ public class agregaCuarto {
         idUsr = Integer.parseInt(datos[1]);
         System.out.println("Usuario: " + idUsr);
         System.out.println("Casa: " + idHs);
-        System.out.println(d);
+        System.out.println(d); 
         cerrar();
 
     }
