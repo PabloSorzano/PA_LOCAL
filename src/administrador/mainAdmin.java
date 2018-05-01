@@ -17,8 +17,7 @@ public class mainAdmin extends JFrame{
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        agregaUsuario obj = new agregaUsuario();
-        obj.setVisible(true);
+        agregaUsuario obj = new agregaUsuario(0);
     }
 
 }

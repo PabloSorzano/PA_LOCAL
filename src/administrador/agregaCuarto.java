@@ -37,10 +37,11 @@ public class agregaCuarto {
     String resTex = "", datos[] = null;
     boolean sigueCu = true, siguePi = true, sigueDis = true;
     String sigCu, sigPi, sigDis;
-    int pisos=0,cuartos = 0, dispositivos = 0;
+    int pisos = 1, cuartos = 1, dispositivos = 1;
 
-    int numeroPiso;
-    String nombreCuarto, disP, obS;
+    int numeroPiso = 0, disP = 0;
+    String nombreCuarto = "", obS = "";
+
     boolean numP;
 
     public agregaCuarto(String d) {
@@ -60,61 +61,63 @@ public class agregaCuarto {
         System.out.println("==========Agregar cuarto(s)==========");
         do {
             System.out.println("Ingrese el numero del piso");
-            numeroPiso += Integer.parseInt(leer.nextLine()) + 0;
+            numeroPiso += Integer.parseInt(leer.nextLine().trim()) + 0;
             analiza(String.valueOf(numeroPiso).trim());
 
             do {
                 System.out.println("Ingrese el nombre del cuarto");
-                nombreCuarto = leer.nextLine();
+                nombreCuarto += leer.nextLine().trim() + ",";
+                cuartos++;
                 analiza(nombreCuarto);
 
                 do {
-                    System.out.println("Seleccione un tipo de dispositivo a agregar");
+                    System.out.println("Seleccione un  dispositivo a agregar");
                     System.out.println("1. FOCO");
                     System.out.println("2. VENTILA");
                     System.out.println("3. PUERTA");
                     System.out.println("4. VENTANA");
                     System.out.println("5. CÁMARA");
-                    disP = leer.nextLine();
-
-                    System.out.println("Desea agregar otro dispositivo en el mismo cuarto? SI / NO");
-                    sigDis = leer.nextLine();
-                    if (sigDis.equalsIgnoreCase("si")) {
-                        cuartos++;
-                    } else if (sigDis.equalsIgnoreCase("no")) {
-                        sigueCu = false;
+                    disP += Integer.parseInt(leer.nextLine().trim()) + cuartos;
+                    if (Integer.parseInt(leer.nextLine()) == 1 || Integer.parseInt(leer.nextLine()) == 2 || Integer.parseInt(leer.nextLine()) == 3 || Integer.parseInt(leer.nextLine()) == 4 || Integer.parseInt(leer.nextLine()) == 5) {
+                        System.out.println("Desea agregar otro dispositivo en el mismo cuarto? SI / NO");
+                        sigDis = leer.nextLine();
+                    } else {
+                        System.out.println("Seleccione una opción válida");
+                        System.out.println("1. FOCO");
+                        System.out.println("2. VENTILA");
+                        System.out.println("3. PUERTA");
+                        System.out.println("4. VENTANA");
+                        System.out.println("5. CÁMARA");
+                        disP += Integer.parseInt(leer.nextLine()) + cuartos;
                     }
-                } while (sigueDis);
+                } while (sigDis.equalsIgnoreCase("si"));
 
                 System.out.println("Desea agregar otro cuarto en el mismo piso? SI / NO");
-                sigCu = leer.nextLine();
-                if (sigCu.equalsIgnoreCase("si")) {
-                    dispositivos++;
-                } else if (sigCu.equalsIgnoreCase("no")) {
-                    sigueCu = false;
-                }
-            } while (sigueCu);
+                sigCu = leer.nextLine().trim();
+
+            } while (sigCu.equalsIgnoreCase("si"));
 
             System.out.println("Ingrese observaciones (optativa)");
-            obS = leer.nextLine();
+            obS += leer.nextLine().trim() + numeroPiso + ",";
             analiza(obS);
 
             System.out.println("Desea agregar otro piso? SI / NO");
-            sigPi = leer.nextLine();
-            if (sigPi.equalsIgnoreCase("si")) {
-                pisos++;
-            } else if (sigPi.equalsIgnoreCase("no")) {
-                sigueCu = false;
-            }
-        } while (siguePi);
-        
-        evalua();
+            sigPi = leer.nextLine().trim();
+
+        } while (sigPi.equalsIgnoreCase("si"));
+
+        System.out.println(numeroPiso);
+        System.out.println(nombreCuarto);
+        System.out.println(disP);
+        System.out.println(obS);
+//        evalua();
     }
-    private void evalua(){
+
+    private void evalua() {
         System.out.println("===========Numero Piso===========");
         System.out.println(numeroPiso);
         numP = vd.soloNumeros(String.valueOf(numeroPiso));
-        
+
         System.out.println("===========Numero Piso===========");
         System.out.println(numeroPiso);
         numP = vd.soloNumeros(String.valueOf(numeroPiso));
